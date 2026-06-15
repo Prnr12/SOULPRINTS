@@ -19,7 +19,6 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
 @keyframes shimmer{from{background-position:0% center}to{background-position:200% center}}
 @keyframes breathe{0%,100%{opacity:.5}50%{opacity:1}}
 
-/* LANDING */
 #landing{text-align:center}
 .orb{width:100px;height:100px;border-radius:50%;background:radial-gradient(circle at 35% 35%,rgba(201,169,110,.65),rgba(124,92,191,.45),rgba(13,11,20,.85));box-shadow:0 0 60px rgba(124,92,191,.3),0 0 120px rgba(201,169,110,.1);display:flex;align-items:center;justify-content:center;font-size:32px;color:#c9a96e;margin:0 auto 40px;animation:pulseOrb 3s infinite}
 .eyebrow{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;color:#c9a96e;text-transform:uppercase;margin-bottom:18px;opacity:.8}
@@ -30,7 +29,6 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
 .btn-primary:hover{background:linear-gradient(135deg,rgba(201,169,110,.28),rgba(124,92,191,.28));box-shadow:0 0 40px rgba(201,169,110,.2)}
 .meta{font-size:13px;color:rgba(255,255,255,.18);margin-top:20px}
 
-/* QUESTIONS */
 .progress-bar{display:flex;gap:9px;justify-content:center;margin-bottom:34px}
 .prog-dot{height:7px;border-radius:4px;background:rgba(255,255,255,.1);transition:all .4s ease}
 .prog-dot.done{background:linear-gradient(90deg,#c9a96e,#7c5cbf);width:7px}
@@ -49,12 +47,10 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
 .btn-next.ready{background:linear-gradient(135deg,#c9a96e,#7c5cbf);color:#0d0b14;cursor:pointer;font-weight:600}
 .hint{font-size:12px;font-style:italic;color:rgba(255,255,255,.13);margin-top:18px;text-align:center}
 
-/* GENERATING */
 #generating{text-align:center}
 .gen-orb{width:80px;height:80px;border-radius:50%;background:radial-gradient(circle,rgba(201,169,110,.4),rgba(124,92,191,.3));display:flex;align-items:center;justify-content:center;font-size:26px;color:#c9a96e;margin:0 auto 38px;animation:pulseOrb 2s infinite}
 .gen-text{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.32em;color:#c9a96e;text-transform:uppercase;animation:breathe 2.2s ease-in-out infinite}
 
-/* RESULT */
 #result{justify-content:flex-start;padding:60px 24px 80px}
 .result-inner{max-width:660px;width:100%}
 .result-header{text-align:center;margin-bottom:44px}
@@ -78,15 +74,34 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
 .seal{text-align:center;margin:36px 0}
 .seal-ring{display:inline-flex;align-items:center;justify-content:center;width:78px;height:78px;border-radius:50%;border:1px solid rgba(201,169,110,.3);font-size:28px;color:#c9a96e;box-shadow:0 0 30px rgba(201,169,110,.1)}
 .seal-text{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:rgba(201,169,110,.4);margin-top:12px;text-transform:uppercase}
-.result-actions{display:flex;gap:14px;flex-wrap:wrap;justify-content:center;margin-top:40px}
 .btn-ghost{background:transparent;border:1px solid rgba(201,169,110,.4);color:#c9a96e;padding:14px 28px;border-radius:40px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;cursor:pointer;transition:all .3s ease;text-transform:uppercase}
 .btn-ghost:hover{background:rgba(201,169,110,.08)}
 .err{color:#e07a7a;font-size:14px;text-align:center;margin-top:10px;display:none}
 
+/* PAYWALL */
+.locked-section{position:relative;margin-bottom:40px}
+.locked-overlay{position:absolute;inset:0;border-radius:18px;backdrop-filter:blur(8px);background:rgba(13,11,20,.85);z-index:2;display:flex;align-items:center;justify-content:center}
+.lock-icon{font-size:32px;color:rgba(201,169,110,.4)}
+.paywall-box{background:linear-gradient(135deg,rgba(201,169,110,.08),rgba(124,92,191,.08));border:1px solid rgba(201,169,110,.35);border-radius:20px;padding:40px 32px;text-align:center;margin-top:8px;position:relative}
+.paywall-box::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent)}
+.pw-badge{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.35em;color:#c9a96e;text-transform:uppercase;margin-bottom:16px;opacity:.7}
+.pw-title{font-family:'Cinzel',serif;font-size:clamp(20px,4vw,28px);color:rgba(240,235,225,.95);margin-bottom:14px;line-height:1.3}
+.pw-desc{font-size:15px;color:rgba(255,255,255,.5);line-height:1.75;margin-bottom:24px;max-width:400px;margin-left:auto;margin-right:auto}
+.pw-items{display:flex;flex-direction:column;gap:10px;margin-bottom:24px;text-align:left;max-width:320px;margin-left:auto;margin-right:auto}
+.pw-item{display:flex;gap:12px;align-items:center;padding:12px 16px;background:rgba(255,255,255,.02);border:1px solid rgba(201,169,110,.1);border-radius:10px}
+.pw-item-num{font-family:'Cinzel',serif;font-size:12px;color:rgba(201,169,110,.5);flex-shrink:0}
+.pw-item-text{font-size:14px;color:rgba(255,255,255,.6)}
+.pw-item-text strong{color:rgba(240,235,225,.85);display:block;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;margin-bottom:2px}
+.pw-price{font-family:'Cinzel',serif;font-size:44px;color:#c9a96e;margin-bottom:6px}
+.pw-orig{font-size:13px;color:rgba(255,255,255,.25);text-decoration:line-through;margin-bottom:22px}
+.btn-unlock{display:inline-block;background:linear-gradient(135deg,#c9a96e,#7c5cbf);border:none;color:#0d0b14;padding:18px 48px;border-radius:50px;font-family:'Cinzel',serif;font-size:12px;letter-spacing:.25em;cursor:pointer;font-weight:600;text-decoration:none;transition:opacity .2s;text-transform:uppercase;margin-bottom:14px}
+.btn-unlock:hover{opacity:.88}
+.pw-note{font-size:12px;color:rgba(255,255,255,.2);font-style:italic}
+
 ::-webkit-scrollbar{width:4px}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(201,169,110,.2);border-radius:2px}
-@media(max-width:480px){.q-card{padding:28px 22px}.result-card{padding:32px 22px}}
+@media(max-width:480px){.q-card{padding:28px 22px}.result-card{padding:32px 22px}.paywall-box{padding:28px 18px}}
 </style>
 </head>
 <body>
@@ -98,7 +113,7 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
   <h1 class="logo">Soulprint</h1>
   <p class="tagline">Nine unexpected questions. One document that finally tells you who you are.</p>
   <p class="sub-tagline">Written like poetry. True like a mirror.</p>
-  <button class="btn-primary" onclick="startQuestions()">Begin Your Soulprint — Free</button>
+  <button class="btn-primary" onclick="startQuestions()">Begin Your Free Soulprint</button>
   <p class="meta">9 questions · 5 minutes · no email required</p>
 </div>
 
@@ -127,51 +142,81 @@ body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,trans
   <div class="result-inner">
     <div class="result-header">
       <div class="result-rule"></div>
-      <p class="result-eyebrow">Your Soulprint Trilogy</p>
+      <p class="result-eyebrow">Your Soulprint</p>
       <div class="result-rule" style="margin-top:20px"></div>
     </div>
 
+    <!-- PART I FREE -->
     <p class="trilogy-title">The Trilogy</p>
     <p class="trilogy-sub">Three Portraits · One Complete Soul</p>
 
     <div style="margin-bottom:40px">
       <div class="section-divider">
         <div class="section-num">I</div>
-        <div class="section-title-block"><strong>The Core</strong><span>Who you are at your foundation</span></div>
+        <div class="section-title-block"><strong>The Core</strong><span>Who you are at your foundation — Free</span></div>
       </div>
       <div class="result-card" id="coreCard"></div>
     </div>
 
-    <div style="margin-bottom:40px">
+    <!-- PART II LOCKED -->
+    <div class="locked-section">
       <div class="section-divider">
         <div class="section-num" style="color:rgba(160,122,224,.35)">II</div>
         <div class="section-title-block"><strong style="color:#a07ae0">The Shadow</strong><span>The self you've been hiding</span></div>
       </div>
-      <div class="result-card shadow-card" id="shadowCard"></div>
+      <div class="result-card shadow-card" style="min-height:180px;filter:blur(4px);pointer-events:none">
+        <p class="section-body">You have learned to make yourself smaller in rooms that never deserved your full presence. The thing you call a flaw is often the most electric part of you — the part that frightens people who need you to stay predictable...</p>
+      </div>
+      <div class="locked-overlay"><div class="lock-icon">🔒</div></div>
     </div>
 
-    <div style="margin-bottom:40px">
+    <!-- PART III LOCKED -->
+    <div class="locked-section" style="margin-bottom:8px">
       <div class="section-divider">
         <div class="section-num">III</div>
         <div class="section-title-block"><strong>The Becoming</strong><span>Who you are turning into right now</span></div>
       </div>
-      <div class="result-card" id="becomingCard"></div>
+      <div class="result-card" style="min-height:180px;filter:blur(4px);pointer-events:none">
+        <p class="section-body">There is a shedding happening beneath the surface of your ordinary days. You are in the middle of something that has no name yet — a transformation so quiet you might have mistaken it for being lost...</p>
+      </div>
+      <div class="locked-overlay"><div class="lock-icon">🔒</div></div>
     </div>
 
-    <div class="seal">
-      <div class="seal-ring">✦</div>
-      <p class="seal-text">Soulprint Trilogy · One of One</p>
+    <!-- PAYWALL -->
+    <div class="paywall-box">
+      <p class="pw-badge">✦ Unlock The Full Trilogy</p>
+      <h2 class="pw-title">You've seen who you are.<br>Now see what you've been hiding.</h2>
+      <p class="pw-desc">Your Shadow and Becoming portraits are waiting. Unlock them instantly.</p>
+      <div class="pw-items">
+        <div class="pw-item">
+          <div class="pw-item-num">II</div>
+          <div class="pw-item-text"><strong>The Shadow</strong>The self you suppress and haven't met yet</div>
+        </div>
+        <div class="pw-item">
+          <div class="pw-item-num">III</div>
+          <div class="pw-item-text"><strong>The Becoming</strong>Who you are turning into right now</div>
+        </div>
+      </div>
+      <p class="pw-price">$19</p>
+      <p class="pw-orig">$47 separately</p>
+      <a class="btn-unlock" href="https://shestillbuilt.gumroad.com/l/vorcep" target="_blank">Unlock My Full Trilogy →</a>
+      <br>
+      <p class="pw-note">Instant · Generated just for you · Yours forever</p>
     </div>
 
-    <div class="result-actions">
-      <button class="btn-ghost" onclick="restart()">Begin Again</button>
+    <div style="text-align:center;margin-top:32px">
+      <button class="btn-ghost" onclick="restart()">Start Over</button>
     </div>
   </div>
 </div>
 
 <script>
-const K1="sk-ant-api03-bxOYn_1EoCg4i2Rdwlt";const K2="PJ-ZWyWviNwIgFhcBkDu4pc1PaYirl";const K3="BpQM9iG7Rd38AQbUFY25Mxklpp_-svjsoFbsA-G9pxtgAA";const API_KEY=K1+K2+K3;
-const QUESTIONS = [
+const K1="sk-ant-api03-bxOYn_1EoCg4i2Rdwlt";
+const K2="PJ-ZWyWviNwIgFhcBkDu4pc1PaYirl";
+const K3="BpQM9iG7Rd38AQbUFY25Mxklpp_-svjsoFbsA-G9pxtgAA";
+const API_KEY=K1+K2+K3;
+
+const QUESTIONS=[
   {q:"What do you keep almost saying — but don't?",p:"The thing that lives just behind your teeth..."},
   {q:"What would you do on your last completely free Tuesday?",p:"No obligations, no one watching..."},
   {q:"What do you secretly think you're better at than people know?",p:"The gift you haven't been given permission to claim..."},
@@ -182,7 +227,7 @@ const QUESTIONS = [
   {q:"What would you want someone to finally understand about you?",p:"The thing that gets lost in translation every time..."},
   {q:"What's the most honest sentence you could say about your life right now?",p:"No performance. Just truth..."}
 ];
-const GEN = ["Reading your words...","Finding the shape of you...","Writing what you've never heard...","Seeing you clearly...","Almost there..."];
+const GEN=["Reading your words...","Finding the shape of you...","Writing what you've never heard...","Seeing you clearly...","Almost there..."];
 let cur=0,ans={},genInt=null;
 
 (function(){
@@ -201,7 +246,6 @@ function show(id){
   void el.offsetWidth;el.style.animation='fadeUp .8s ease forwards';
   window.scrollTo(0,0);
 }
-
 function renderProgress(idx){
   const b=document.getElementById('progressBar');b.innerHTML='';
   QUESTIONS.forEach((_,i)=>{
@@ -210,7 +254,6 @@ function renderProgress(idx){
     b.appendChild(d);
   });
 }
-
 function renderQ(idx){
   const q=QUESTIONS[idx];
   document.getElementById('qText').textContent=q.q;
@@ -222,14 +265,12 @@ function renderQ(idx){
   updateBtn();
   setTimeout(()=>document.getElementById('answerBox').focus(),300);
 }
-
 function updateBtn(){
   const v=document.getElementById('answerBox').value.trim();
   const b=document.getElementById('btnNext');
   b.classList.toggle('ready',v.length>0);
-  b.textContent=cur===QUESTIONS.length-1?'Generate My Trilogy →':'Continue →';
+  b.textContent=cur===QUESTIONS.length-1?'Reveal My Soulprint →':'Continue →';
 }
-
 function startQuestions(){cur=0;ans={};show('questions');renderQ(0);}
 function goBack(){if(cur>0){ans[cur]=document.getElementById('answerBox').value;cur--;renderQ(cur);}}
 function goNext(){
@@ -243,7 +284,6 @@ document.getElementById('answerBox').addEventListener('input',updateBtn);
 function buildQA(){
   return QUESTIONS.map((q,i)=>'Q'+(i+1)+': '+q.q+'\nA: '+(ans[i]||'(left blank)')).join('\n\n');
 }
-
 async function callAPI(prompt){
   const r=await fetch('https://api.anthropic.com/v1/messages',{
     method:'POST',
@@ -259,30 +299,16 @@ async function callAPI(prompt){
   if(d?.content?.[0]?.text)return d.content[0].text;
   throw new Error('No response');
 }
-
 async function generate(){
   show('generating');
   let pi=0;
   genInt=setInterval(()=>{pi=(pi+1)%GEN.length;document.getElementById('genText').textContent=GEN[pi];},2200);
-
   const qa=buildQA();
-
   const corePrompt='You are a poet and psychologist. Write a Soulprint — a deeply personal portrait of who this person is.\n\nUse ## to mark each section:\n\n## The Core of You\n[2-3 paragraphs. Use their specific answers. Feel like a revelation.]\n\n## What You Carry\n[1-2 paragraphs of compassion.]\n\n## Your Hidden Edge\n[1-2 paragraphs about their quiet power.]\n\n## What You\'re Moving Toward\n[1-2 paragraphs. Like a door opening.]\n\n## The One True Thing\n[One single sentence that makes them stop breathing.]\n\nRules: Use "you". Be SPECIFIC. Write like a poet. No clichés. 400 words.\n\nAnswers:\n'+qa;
-
-  const shadowPrompt='You are a depth psychologist and poet. Write the SHADOW portrait — the self this person suppresses and hasn\'t met yet. This is NOT negative. It is the unlived life.\n\nUse ## headers:\n\n## What You\'ve Hidden\n[2 paragraphs about what they\'ve pushed down.]\n\n## The Underground Self\n[2 paragraphs about what lives in their shadow.]\n\n## The Gift in the Dark\n[1-2 paragraphs about what their shadow offers them.]\n\n## The Shadow Truth\n[One sentence their shadow would say to them.]\n\nRules: Use "you". Specific to THEIR answers. Jungian poet style. 300 words.\n\nAnswers:\n'+qa;
-
-  const becomingPrompt='You are a visionary poet. Write the BECOMING portrait — who this person is mid-transformation into RIGHT NOW.\n\nUse ## headers:\n\n## The Shedding\n[1-2 paragraphs about what they\'re leaving behind now.]\n\n## The Emerging Form\n[2 paragraphs about the new version taking shape.]\n\n## What\'s Already True\n[1-2 paragraphs of evidence from their answers.]\n\n## The Becoming Sentence\n[One sentence. Who they\'ll be when they stop being afraid.]\n\nRules: Use "you". Pull from their answers. Visionary but grounded. 300 words.\n\nAnswers:\n'+qa;
-
   try{
-    const [core,shadow,becoming]=await Promise.all([
-      callAPI(corePrompt),
-      callAPI(shadowPrompt),
-      callAPI(becomingPrompt)
-    ]);
+    const core=await callAPI(corePrompt);
     clearInterval(genInt);
     renderInto('coreCard',core,false);
-    renderInto('shadowCard',shadow,true);
-    renderInto('becomingCard',becoming,false);
     show('result');
   }catch(e){
     clearInterval(genInt);
@@ -293,7 +319,6 @@ async function generate(){
     setTimeout(()=>err.style.display='none',5000);
   }
 }
-
 function renderInto(id,text,shadow){
   const card=document.getElementById(id);card.innerHTML='';
   text.split('\n').filter(l=>l.trim()).forEach(line=>{
@@ -308,7 +333,6 @@ function renderInto(id,text,shadow){
     }
   });
 }
-
 function restart(){cur=0;ans={};show('landing');}
 </script>
 </body>
