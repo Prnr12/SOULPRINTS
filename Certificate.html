@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Soulprint Certificate</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=EB+Garamond:ital,wght@0,400;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#0d0b14;font-family:'EB Garamond',serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:30px 20px;gap:24px}
+body{background:radial-gradient(ellipse at 25% 15%,rgba(124,92,191,.13) 0%,transparent 55%),radial-gradient(ellipse at 75% 85%,rgba(201,169,110,.09) 0%,transparent 55%),#0d0b14}
+
+.page-title{font-family:'Cinzel',serif;font-size:11px;letter-spacing:.4em;color:#c9a96e;text-transform:uppercase;opacity:.7;text-align:center}
+
+.form-box{background:rgba(255,255,255,.03);border:1px solid rgba(201,169,110,.2);border-radius:16px;padding:32px;max-width:560px;width:100%}
+.form-label{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.25em;color:#c9a96e;text-transform:uppercase;display:block;margin-bottom:8px;opacity:.7}
+.form-input{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,.3);color:rgba(240,235,225,.9);font-family:'EB Garamond',serif;font-size:18px;padding:10px 0;outline:none;caret-color:#c9a96e;margin-bottom:22px}
+.form-input::placeholder{color:rgba(201,169,110,.25);font-style:italic}
+.form-row{display:flex;gap:16px}
+.form-row .form-input{flex:1}
+.form-textarea{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(201,169,110,.3);color:rgba(240,235,225,.9);font-family:'EB Garamond',serif;font-size:16px;padding:10px 0;outline:none;caret-color:#c9a96e;resize:none;min-height:70px;line-height:1.6;margin-bottom:22px}
+.form-textarea::placeholder{color:rgba(201,169,110,.25);font-style:italic}
+.form-select{width:100%;background:#0d0b14;border:none;border-bottom:1px solid rgba(201,169,110,.3);color:rgba(240,235,225,.9);font-family:'EB Garamond',serif;font-size:18px;padding:10px 0;outline:none;margin-bottom:22px;cursor:pointer}
+.form-select option{background:#1a1430}
+.btn-generate{background:linear-gradient(135deg,#c9a96e,#7c5cbf);border:none;color:#0d0b14;padding:16px 40px;border-radius:40px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.25em;cursor:pointer;font-weight:600;text-transform:uppercase;width:100%;transition:opacity .2s}
+.btn-generate:hover{opacity:.88}
+
+#certWrap{display:none;max-width:760px;width:100%}
+
+.cert{
+  width:100%;
+  background:linear-gradient(160deg,#0f0c1e 0%,#1a1430 40%,#0f0c1e 100%);
+  border:1px solid rgba(201,169,110,.35);
+  border-radius:6px;
+  position:relative;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:52px 48px;
+  text-align:center;
+  overflow:hidden;
+}
+.cert-corner{position:absolute;width:50px;height:50px}
+.cert-corner.tl{top:18px;left:18px;border-top:1px solid rgba(201,169,110,.5);border-left:1px solid rgba(201,169,110,.5)}
+.cert-corner.tr{top:18px;right:18px;border-top:1px solid rgba(201,169,110,.5);border-right:1px solid rgba(201,169,110,.5)}
+.cert-corner.bl{bottom:18px;left:18px;border-bottom:1px solid rgba(201,169,110,.5);border-left:1px solid rgba(201,169,110,.5)}
+.cert-corner.br{bottom:18px;right:18px;border-bottom:1px solid rgba(201,169,110,.5);border-right:1px solid rgba(201,169,110,.5)}
+.cert-glow{position:absolute;width:70%;height:70%;border-radius:50%;background:radial-gradient(circle,rgba(124,92,191,.07) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%);pointer-events:none}
+
+.cert-eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:.45em;color:rgba(201,169,110,.6);text-transform:uppercase;margin-bottom:16px}
+.cert-star{font-size:22px;color:rgba(201,169,110,.45);margin-bottom:14px}
+.cert-name{font-family:'Great Vibes',cursive;font-size:clamp(42px,7vw,76px);color:#e8d5a3;margin-bottom:6px;line-height:1.1}
+.cert-born{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:rgba(201,169,110,.4);text-transform:uppercase;margin-bottom:20px}
+.cert-rule{width:50%;height:1px;background:linear-gradient(90deg,transparent,#c9a96e,transparent);margin:0 auto 20px}
+
+/* Astrology row */
+.astro-row{display:flex;gap:0;margin-bottom:24px;border:1px solid rgba(201,169,110,.15);border-radius:10px;overflow:hidden;width:100%;max-width:400px}
+.astro-item{flex:1;padding:14px 8px;text-align:center;border-right:1px solid rgba(201,169,110,.1)}
+.astro-item:last-child{border-right:none}
+.astro-symbol{font-size:22px;margin-bottom:6px;display:block}
+.astro-sign{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.15em;color:#c9a96e;text-transform:uppercase;display:block;margin-bottom:3px}
+.astro-label{font-size:10px;color:rgba(255,255,255,.3);display:block;font-style:italic}
+
+.cert-divider{width:40%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.3),transparent);margin:0 auto 20px}
+.cert-truth-label{font-family:'Cinzel',serif;font-size:9px;letter-spacing:.3em;color:rgba(201,169,110,.4);text-transform:uppercase;margin-bottom:12px}
+.cert-truth{font-family:'EB Garamond',serif;font-style:italic;font-size:clamp(14px,2.2vw,19px);color:rgba(240,235,225,.82);max-width:75%;line-height:1.65;margin:0 auto 24px}
+
+.cert-seal-row{display:flex;align-items:center;gap:16px;width:60%;margin:0 auto}
+.cert-seal-line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,110,.3))}
+.cert-seal-line.r{background:linear-gradient(90deg,rgba(201,169,110,.3),transparent)}
+.cert-seal{width:46px;height:46px;border-radius:50%;border:1px solid rgba(201,169,110,.3);display:flex;align-items:center;justify-content:center;font-size:18px;color:#c9a96e;flex-shrink:0}
+.cert-footer{font-family:'Cinzel',serif;font-size:8px;letter-spacing:.3em;color:rgba(201,169,110,.25);text-transform:uppercase;margin-top:20px}
+
+.btn-download{background:transparent;border:1px solid rgba(201,169,110,.4);color:#c9a96e;padding:14px 32px;border-radius:40px;font-family:'Cinzel',serif;font-size:11px;letter-spacing:.2em;cursor:pointer;transition:all .3s;text-transform:uppercase;margin-top:22px;display:block;margin-left:auto;margin-right:auto}
+.btn-download:hover{background:rgba(201,169,110,.08)}
+.btn-restart{background:transparent;border:none;color:rgba(255,255,255,.2);font-family:'Cinzel',serif;font-size:10px;letter-spacing:.15em;cursor:pointer;margin-top:12px;display:block;margin-left:auto;margin-right:auto;text-transform:uppercase}
+
+.upsell{background:rgba(201,169,110,.04);border:1px solid rgba(201,169,110,.18);border-radius:12px;padding:22px;max-width:560px;width:100%;text-align:center;display:none}
+.upsell p{font-size:15px;color:rgba(255,255,255,.45);margin-bottom:14px;line-height:1.6}
+.upsell a{display:inline-block;background:linear-gradient(135deg,#c9a96e,#7c5cbf);color:#0d0b14;padding:13px 30px;border-radius:30px;font-family:'Cinzel',serif;font-size:10px;letter-spacing:.2em;text-decoration:none;font-weight:600;text-transform:uppercase}
+
+@media(max-width:480px){.cert{padding:32px 22px}.astro-row{max-width:100%}.form-row{flex-direction:column;gap:0}}
+</style>
+</head>
+<body>
+
+<p class="page-title">✦ Soulprint Certificate</p>
+
+<div class="form-box" id="formBox">
+  <label class="form-label">Your Full Name</label>
+  <input class="form-input" id="nameInput" placeholder="As you'd like it written..." maxlength="40">
+
+  <label class="form-label">Birth Date</label>
+  <input class="form-input" id="birthDate" type="date">
+
+  <label class="form-label">Birth Time (approximate is fine)</label>
+  <input class="form-input" id="birthTime" type="time" placeholder="HH:MM">
+
+  <label class="form-label">Birth City</label>
+  <input class="form-input" id="birthCity" placeholder="e.g. Dallas, Texas..." maxlength="60">
+
+  <label class="form-label">Your One True Thing (from your Soulprint)</label>
+  <textarea class="form-textarea" id="truthInput" placeholder="Paste the sentence that stopped you breathing..."></textarea>
+
+  <button class="btn-generate" onclick="generate()">Generate My Certificate →</button>
+</div>
+
+<div id="certWrap">
+  <div class="cert" id="theCert">
+    <div class="cert-corner tl"></div>
+    <div class="cert-corner tr"></div>
+    <div class="cert-corner bl"></div>
+    <div class="cert-corner br"></div>
+    <div class="cert-glow"></div>
+
+    <p class="cert-eyebrow">Soulprint Certificate</p>
+    <div class="cert-star">✦</div>
+    <h1 class="cert-name" id="certName">Your Name</h1>
+    <p class="cert-born" id="certBorn">Born · City · Date</p>
+    <div class="cert-rule"></div>
+
+    <div class="astro-row" id="astroRow">
+      <div class="astro-item">
+        <span class="astro-symbol" id="sunSymbol">☀️</span>
+        <span class="astro-sign" id="sunSign">—</span>
+        <span class="astro-label">Sun</span>
+      </div>
+      <div class="astro-item">
+        <span class="astro-symbol" id="moonSymbol">🌙</span>
+        <span class="astro-sign" id="moonSign">—</span>
+        <span class="astro-label">Moon</span>
+      </div>
+      <div class="astro-item">
+        <span class="astro-symbol" id="risingSymbol">⬆️</span>
+        <span class="astro-sign" id="risingSign">—</span>
+        <span class="astro-label">Rising</span>
+      </div>
+    </div>
+
+    <div class="cert-divider"></div>
+    <p class="cert-truth-label">The One True Thing</p>
+    <p class="cert-truth" id="certTruth">"Your truth will appear here."</p>
+
+    <div class="cert-seal-row">
+      <div class="cert-seal-line"></div>
+      <div class="cert-seal">✦</div>
+      <div class="cert-seal-line r"></div>
+    </div>
+    <p class="cert-footer" id="certFooter">Soulprint · One of One</p>
+  </div>
+
+  <button class="btn-download" onclick="downloadCert()">↓ Download Certificate</button>
+  <button class="btn-restart" onclick="restart()">Make another</button>
+</div>
+
+<div class="upsell" id="upsell">
+  <p>Want your full Soulprint Trilogy? Unlock your Shadow Self and Becoming portrait.</p>
+  <a href="https://shestillbuilt.gumroad.com/l/vorcep" target="_blank">Unlock Full Trilogy — $19 →</a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// Zodiac signs with symbols
+const SIGNS = [
+  {name:'Capricorn',symbol:'♑',emoji:'🐐'},
+  {name:'Aquarius',symbol:'♒',emoji:'🏺'},
+  {name:'Pisces',symbol:'♓',emoji:'🐟'},
+  {name:'Aries',symbol:'♈',emoji:'🐏'},
+  {name:'Taurus',symbol:'♉',emoji:'🐂'},
+  {name:'Gemini',symbol:'♊',emoji:'👯'},
+  {name:'Cancer',symbol:'♋',emoji:'🦀'},
+  {name:'Leo',symbol:'♌',emoji:'🦁'},
+  {name:'Virgo',symbol:'♍',emoji:'🌾'},
+  {name:'Libra',symbol:'♎',emoji:'⚖️'},
+  {name:'Scorpio',symbol:'♏',emoji:'🦂'},
+  {name:'Sagittarius',symbol:'♐',emoji:'🏹'}
+];
+
+// Sun sign from birth date
+function getSunSign(month, day) {
+  const dates = [
+    [1,20],[2,19],[3,21],[4,20],[5,21],[6,21],
+    [7,23],[8,23],[9,23],[10,23],[11,22],[12,22]
+  ];
+  for(let i=0;i<12;i++){
+    const [m,d] = dates[i];
+    if(month===m && day<d) return SIGNS[i];
+    if(month===m && day>=d) return SIGNS[(i+1)%12];
+  }
+  return SIGNS[0];
+}
+
+// Moon sign approximation (moves ~1 sign per 2.5 days)
+function getMoonSign(date) {
+  const ref = new Date('2000-01-01');
+  const days = Math.floor((date - ref) / (1000*60*60*24));
+  const idx = Math.floor((days % 30) / 2.5) % 12;
+  return SIGNS[idx];
+}
+
+// Rising sign from birth time + birth date
+function getRisingSign(hour, date) {
+  const sunIdx = SIGNS.indexOf(getSunSign(date.getMonth()+1, date.getDate()));
+  const risingIdx = (sunIdx + Math.floor(hour/2)) % 12;
+  return SIGNS[risingIdx];
+}
+
+function formatDate(dateStr) {
+  const d = new Date(dateStr + 'T12:00:00');
+  const months = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+  return months[d.getMonth()] + ' ' + d.getDate() + ', ' + d.getFullYear();
+}
+
+function generate() {
+  const name = document.getElementById('nameInput').value.trim();
+  const birthDate = document.getElementById('birthDate').value;
+  const birthTime = document.getElementById('birthTime').value;
+  const birthCity = document.getElementById('birthCity').value.trim();
+  const truth = document.getElementById('truthInput').value.trim();
+
+  if(!name || !birthDate || !truth) {
+    alert('Please fill in your name, birth date, and One True Thing.');
+    return;
+  }
+
+  const date = new Date(birthDate + 'T12:00:00');
+  const month = date.getMonth() + 1;
+  const day = date.getDate();
+  const hour = birthTime ? parseInt(birthTime.split(':')[0]) : 6;
+
+  const sun = getSunSign(month, day);
+  const moon = getMoonSign(date);
+  const rising = getRisingSign(hour, date);
+
+  // Fill certificate
+  document.getElementById('certName').textContent = name;
+  document.getElementById('certBorn').textContent = 
+    (birthCity ? birthCity + '  ·  ' : '') + formatDate(birthDate);
+  
+  document.getElementById('sunSymbol').textContent = sun.symbol;
+  document.getElementById('sunSign').textContent = sun.name;
+  document.getElementById('moonSymbol').textContent = moon.symbol;
+  document.getElementById('moonSign').textContent = moon.name;
+  document.getElementById('risingSymbol').textContent = rising.symbol;
+  document.getElementById('risingSign').textContent = rising.name;
+
+  document.getElementById('certTruth').textContent = '"' + truth + '"';
+
+  const now = new Date();
+  const months = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+  document.getElementById('certFooter').textContent = 
+    'Soulprint  ·  ' + months[now.getMonth()] + ' ' + now.getFullYear() + '  ·  One of One';
+
+  document.getElementById('formBox').style.display = 'none';
+  document.getElementById('certWrap').style.display = 'block';
+  document.getElementById('upsell').style.display = 'block';
+}
+
+function downloadCert() {
+  const cert = document.getElementById('theCert');
+  if(typeof html2canvas !== 'undefined') {
+    html2canvas(cert, {
+      scale: 3,
+      backgroundColor: '#0f0c1e',
+      useCORS: true,
+      logging: false
+    }).then(canvas => {
+      const a = document.createElement('a');
+      a.download = 'soulprint-certificate.png';
+      a.href = canvas.toDataURL('image/png');
+      a.click();
+    });
+  } else {
+    window.print();
+  }
+}
+
+function restart() {
+  document.getElementById('nameInput').value = '';
+  document.getElementById('birthDate').value = '';
+  document.getElementById('birthTime').value = '';
+  document.getElementById('birthCity').value = '';
+  document.getElementById('truthInput').value = '';
+  document.getElementById('formBox').style.display = 'block';
+  document.getElementById('certWrap').style.display = 'none';
+  document.getElementById('upsell').style.display = 'none';
+}
+</script>
+</body>
+</html>
