@@ -217,15 +217,15 @@ const K3="BpQM9iG7Rd38AQbUFY25Mxklpp_-svjsoFbsA-G9pxtgAA";
 const API_KEY=K1+K2+K3;
 
 const QUESTIONS=[
-  {q:"What do you keep almost saying — but don't?",p:"The thing that lives just behind your teeth..."},
-  {q:"What would you do on your last completely free Tuesday?",p:"No obligations, no one watching..."},
-  {q:"What do you secretly think you're better at than people know?",p:"The gift you haven't been given permission to claim..."},
-  {q:"What have you outgrown but haven't let yourself leave yet?",p:"A belief, a relationship, a version of yourself..."},
-  {q:"What kind of silence feels like home to you?",p:"Describe it like a place..."},
-  {q:"What do you love that you've never once been able to explain?",p:"Something you feel but can't justify..."},
-  {q:"What are you in the middle of becoming?",p:"Not who you were. Not quite who you will be..."},
-  {q:"What would you want someone to finally understand about you?",p:"The thing that gets lost in translation every time..."},
-  {q:"What's the most honest sentence you could say about your life right now?",p:"No performance. Just truth..."}
+  {q:"What do you never say out loud?",p:"The thing living just behind your teeth..."},
+  {q:"What do you do when no one is watching?",p:"Your truest self..."},
+  {q:"What are you better at than anyone knows?",p:"The gift you've never been given permission to claim..."},
+  {q:"What are you staying in that no longer fits you?",p:"A belief, a person, a version of yourself..."},
+  {q:"Where do you feel most like yourself?",p:"A place, a moment, a feeling..."},
+  {q:"What do you love that you can't explain?",p:"Something irrational. Something yours..."},
+  {q:"Who are you becoming right now?",p:"Not who you were. Not quite who you'll be..."},
+  {q:"What do people always get wrong about you?",p:"The thing that gets lost every time..."},
+  {q:"Finish this sentence honestly: Right now my life is...",p:"No performance. Just truth..."}
 ];
 const GEN=["Reading your words...","Finding the shape of you...","Writing what you've never heard...","Seeing you clearly...","Almost there..."];
 let cur=0,ans={},genInt=null;
@@ -304,7 +304,7 @@ async function generate(){
   let pi=0;
   genInt=setInterval(()=>{pi=(pi+1)%GEN.length;document.getElementById('genText').textContent=GEN[pi];},2200);
   const qa=buildQA();
-  const corePrompt='You are a poet and psychologist. Write a Soulprint — a deeply personal portrait of who this person is.\n\nUse ## to mark each section:\n\n## The Core of You\n[2-3 paragraphs. Use their specific answers. Feel like a revelation.]\n\n## What You Carry\n[1-2 paragraphs of compassion.]\n\n## Your Hidden Edge\n[1-2 paragraphs about their quiet power.]\n\n## What You\'re Moving Toward\n[1-2 paragraphs. Like a door opening.]\n\n## The One True Thing\n[One single sentence that makes them stop breathing.]\n\nRules: Use "you". Be SPECIFIC. Write like a poet. No clichés. 400 words.\n\nAnswers:\n'+qa;
+  const corePrompt='You are a poet who sees people clearly. Write a Soulprint — short, specific, devastating in the best way.\n\nUSE EXACTLY THESE ## HEADERS:\n\n## Who You Are\n[3 sentences MAX. Pull directly from their answers. Specific details, not general statements.]\n\n## What You Carry\n[2 sentences MAX. What weighs on them. Compassionate, not pitying.]\n\n## Your Secret Power\n[2 sentences MAX. The strength they are not claiming yet.]\n\n## The Truth\n[ONE sentence only. The thing that makes them stop breathing. Make it irreducibly true to THEM.]\n\nHARD RULES:\n- Total length: under 180 words\n- Use "you" throughout\n- Pull SPECIFIC details from their answers — names, images, exact phrases\n- Zero clichés. Zero generic affirmations.\n- Every word must earn its place\n\nAnswers:\n'+qa;
   try{
     const core=await callAPI(corePrompt);
     clearInterval(genInt);
